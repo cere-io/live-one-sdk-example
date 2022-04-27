@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 function App() {
 
     const [sdk, setSdk] = useState('No result');
-    const [html, setHtml] = useState();
 
     useEffect(() => {
         let sdk = cereWebSDK('2095', null, {
@@ -55,7 +54,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <button onClick={sendSdkEvent}>Send Sdk Event</button>
-                <iframe id="contentIFrame" width={400} height={700} frameBorder={3} color={'white'}>
+                <iframe title={"Action Window"} id="contentIFrame" width={400} height={700} frameBorder={3} color={'white'}>
                 </iframe>
             </header>
         </div>
