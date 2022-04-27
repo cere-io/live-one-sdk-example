@@ -1,0 +1,45 @@
+<html>
+  <head> </head>
+
+  <body>
+    <script src="https://sdk.dev.cere.io/v4.3.1/web.js" type="text/javascript"></script>
+
+    <script>
+      const LIVE_ONE_APP_ID = '2095';
+
+      let sdk = CereSDK.web.cereWebSDK(LIVE_ONE_APP_ID, null, {
+        authMethod: {
+          type: 'TRUSTED_3RD_PARTY',
+          externalUserId: '12345', // replace with user id in Live One system
+          token: '1234567890', // This token should be provided from authorized user by Live One
+        },
+        deployment: 'dev',
+      });
+
+      sdk.onEngagement((template) => {
+        const doc = document.getElementById('contentIFrame').contentWindow.document;
+        doc.open();
+        doc.write(template);
+        doc.close();
+      });
+
+      let sendEvent = async () => {
+        let timestamp = Number(new Date());
+
+        let signature = await sdk.signMessage(`${timestamp}`);
+
+        sdk.sendEvent('LIVE_ONE_LIST_OF_NFTS', {
+          timestamp,
+          signature,
+        });
+      };
+    </script>
+
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+      <h1>Live One integration example</h1>
+      <button onclick="sendEvent()">Send</button>
+      <iframe title="Title" id="contentIFrame" width="400" height="700" frameborder="3" color="white"></iframe>
+    </div>
+  </body>
+</html>
