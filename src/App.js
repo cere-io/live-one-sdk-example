@@ -44,10 +44,14 @@ function App() {
 
     let signature = await sdk.signMessage(`${timestamp}`);
 
-    sdk.sendEvent('LIVE_ONE_LIST_OF_NFTS', {
+    let payload = {
       timestamp,
       signature,
-    });
+    };
+
+    console.log(JSON.stringify(payload))
+
+    sdk.sendEvent('LIVE_ONE_LIST_OF_NFTS', payload);
   };
 
   return (
