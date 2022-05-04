@@ -11,9 +11,11 @@ function App() {
     let sdk = cereWebSDK(LIVE_ONE_APP_ID, null, {
       authMethod: {
         type: 'TRUSTED_3RD_PARTY',
-        externalUserId: '12345', // replace with user id in Live One system
+        externalUserId: '212121', // replace with user id in Live One system
         token: '1234567890', // This token should be provided from authorized user by Live One
       },
+
+
       deployment: 'dev',
     });
 
@@ -51,14 +53,14 @@ function App() {
 
     console.log(JSON.stringify(payload))
 
-    sdk.sendEvent('LIVE_ONE_LIST_OF_NFTS', payload);
+    sdk.sendEvent('LIVE_ONE_CONTEXTUAL_ENTERED', payload);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <button onClick={sendSdkEvent}>Send Sdk Event</button>
-        <iframe title={'Action Window'} id="contentIFrame" width={400} height={700} frameBorder={3} color={'white'} />
+        <iframe title={'Action Window'} id="contentIFrame" width={550} height={900} frameBorder={3} color={'white'} />
       </header>
     </div>
   );
