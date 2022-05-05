@@ -74,7 +74,7 @@ function App() {
                     <option value="414141">Platinum Access User</option>
                 </select>
             </div>
-            <iframe title={'Action Window'} id="contentIFrame" width={550} height={700} frameBorder={3}
+            <iframe title={'Action Window'} id="contentIFrame" width={550} height={1100} frameBorder={3}
                     color={'white'}/>
         </div>
     );
