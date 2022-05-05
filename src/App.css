@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  padding-bottom: 69px;
 }
 
 .App-logo {
@@ -25,9 +27,13 @@
 }
 
 button{
-  padding: 20px;
-  margin: 50px;
+  padding: 5px;
+  margin: 20px;
   cursor:pointer;
+}
+
+select {
+  padding: 5px;
 }
 
 .App-link {
