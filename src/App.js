@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react';
 function App() {
     const [sdk, setSdk] = useState();
     const [externalUserId, setExternalUserId] = useState('212121');
-    const [appId, setAppId] = useState('2095');
+    const [appId, setAppId] = useState('2354');
 
     useEffect(() => {
         let sdk = cereWebSDK(appId, null, {
@@ -59,8 +59,8 @@ function App() {
                 <select value={appId} onChange={e => {
                     setAppId(e.target.value);
                 }}>
-                    <option value="2095">Cere Dev</option>
-                    <option value="2354">Dedicated Live One Dev</option>
+                    <option value="2095">2095 - Cere Dev</option>
+                    <option value="2354">2354 - Dedicated Live One Dev</option>
                 </select>
                 <select value={externalUserId} onChange={e => {
                     setExternalUserId(e.target.value);
