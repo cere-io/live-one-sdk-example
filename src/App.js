@@ -16,8 +16,6 @@ function App() {
             },
             deployment: 'dev',
         });
-        console.log(appId);
-        console.log(externalUserId);
         /**
          * Specify the action after engagement data received.
          * Please note: this action happens asynchronously.
