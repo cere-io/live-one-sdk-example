@@ -1,0 +1,35 @@
+name: Deploy package
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  publish_npm:
+    runs-on: [self-hosted, cere-io-large-workers]
+    steps:
+      - uses: actions/checkout@v2
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+      - name: Get Node.js version
+        id: nvm
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install packages
+        run: npm ci
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_READ}}
+      - name: Build
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_PUBLISH}}
+        run: npm run build
+      - name: Deploy
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_PUBLISH}}
+        run: npm run deploy
