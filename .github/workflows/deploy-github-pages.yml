@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish_npm:
-    runs-on: [self-hosted, cere-io-large-workers]
+    runs-on: [ self-hosted, cere-io-large-workers ]
     steps:
       - uses: actions/checkout@v2
 
@@ -31,6 +31,9 @@ jobs:
           NPM_TOKEN: ${{secrets.NPM_TOKEN_READ}}
 
       - name: Deploy
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: build
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN_PUBLISH}}
-        run: npm run deploy
+          GITHUB_TOKEN: ${{ secrets.GH_PAGES_ACCESS_TOKEN }}
