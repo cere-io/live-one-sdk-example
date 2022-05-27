@@ -20,6 +20,8 @@ const userIdToName = {
   114114: 'Platinum Access User',
 };
 
+const MOCKED_USER_TOKEN = '1234567890'; // This token should be provided from authorized user by Live One
+
 export function App() {
   const [sdk, setSdk] = useState();
   const [externalUserId, setExternalUserId] = useState('212121');
@@ -29,10 +31,10 @@ export function App() {
     let sdk = cereWebSDK(deploymentToApp[deployment], null, {
       authMethod: {
         type: 'TRUSTED_3RD_PARTY',
-        externalUserId: externalUserId, // replace with user id in Live One system
-        token: '1234567890', // This token should be provided from authorized user by Live One
+        externalUserId, // replace with user id in Live One system
+        token: MOCKED_USER_TOKEN,
       },
-      deployment: deployment,
+      deployment,
     });
     /**
      * Specify the action after engagement data received.
