@@ -30,6 +30,11 @@ jobs:
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN_READ}}
 
+      - name: Build
+        run: npm run build
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN_READ}}
+
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
