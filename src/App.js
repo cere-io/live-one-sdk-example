@@ -15,9 +15,9 @@ const deploymentToApp = {
 };
 
 const users = [
-  {id: '112112', name: 'Gold Access User'},
-  {id: '113113', name: 'Diamond Access User'},
-  {id: '114114', name: 'Platinum Access User'},
+  {id: '112112112', name: 'Gold Access User'},
+  {id: '113113113', name: 'Diamond Access User'},
+  {id: '114114114', name: 'Platinum Access User'},
 ];
 
 const MOCKED_USER_TOKEN = '1234567890'; // This token should be provided from authorized user by Live One
