@@ -14,17 +14,17 @@ const deploymentToApp = {
   [deployments.PROD]: '2096',
 };
 
-const userIdToName = {
-  112112: 'Gold Access User',
-  113113: 'Diamond Access User',
-  114114: 'Platinum Access User',
-};
+const users = [
+  {id: '112112', name: 'Gold Access User'},
+  {id: '113113', name: 'Diamond Access User'},
+  {id: '114114', name: 'Platinum Access User'},
+];
 
 const MOCKED_USER_TOKEN = '1234567890'; // This token should be provided from authorized user by Live One
 
 export function App() {
   const [sdk, setSdk] = useState();
-  const [externalUserId, setExternalUserId] = useState('212121');
+  const [externalUserId, setExternalUserId] = useState(users.length ? users[0].id : null);
   const [deployment, setDeployment] = useState(deployments.DEV);
 
   useEffect(() => {
@@ -82,9 +82,9 @@ export function App() {
             setExternalUserId(e.target.value);
           }}
         >
-          {Object.keys(userIdToName).map((userId) => (
-            <option value={userId} key={userId}>
-              {userIdToName[userId]}
+          {users.map((user) => (
+            <option value={user.id} key={user.id}>
+              {user.name}
             </option>
           ))}
         </select>
